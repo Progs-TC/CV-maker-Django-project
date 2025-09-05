@@ -1,0 +1,161 @@
+Exersise of Data Admisterition
+
+1:A company wants to calculate the annual salary of an employee. Write a PL/SQL block that 
+takes basic_salary and bonus as variables and prints the annual salary. 
+
+Declare
+	basic_salary	Number:=5000;
+	bonus			Number:=1000;
+	annual_salary	Number;
+Begin
+	annual_salary:= basic_salary+bonus;
+	DBMS_OUTPUT.PUT_LINE('Annual_salary:' || annual_salary);
+End;
+/
+---------------------------------------------------------------------------------------------------------------------------------------
+2: A university stores a student’s marks in 3 subjects. Write a PL/SQL block to calculate the 
+average marks and display the result. 
+
+DECLARE
+  m1 NUMBER := 85;
+  m2 NUMBER := 90;
+  m3 NUMBER := 78;
+  v_avg NUMBER;
+BEGIN
+  avg := (m1 + m2 + m3) / 3;
+  DBMS_OUTPUT.PUT_LINE('Average marks: ' || v_avg);
+END;
+/
+--------------------------------------------------------------------------------------------------------------------------------------
+ Conditional Statements 
+3. A bank system stores a customer’s account balance. 
+o If balance < 1000 → print "Low Balance" 
+o If balance between 1000 and 5000 → print "Sufficient Balance" 
+o If balance > 5000 → print "High Balance" 
+ 
+  Write a PL/SQL block using IF-ELSIF. 
+
+Declare
+	balance	Number:=1000;
+	status	Varchar(20);
+Begin
+	if balance <3000 Then
+		status:= 'low money';
+	elseif balance <5000 Then 
+		status:= 'mediam money';
+	else
+		status:='high money';
+	endif;
+	DBMS_OUTPUT.PUT_LINE('Status: ' || status);
+End;
+/
+--------------------------------------------------------------------------------------------------------------------------------
+4. A grading system accepts a student’s percentage. 
+o 90–100 → "A Grade" 
+o 75–89 → "B Grade" 
+o 50–74 → "C Grade" 
+o Below 50 → "Fail" 
+ 
+  Write using a CASE statement. 
+
+Declare 
+	grade		Number:=78;
+	status	Varchar(30);
+Begin
+	if 90<grade<=100 Then
+		status:='A grade';
+	elseif 75<grade<80 Then
+		status:='B grade';
+	elseif 50<grade<74 Then
+		status:='C grade';
+	else
+		status:='Fail';
+	endif
+	DBMS_OUTPUT.PUT_LINE('status: ' || status);
+End;
+/
+----------------------------------------------------------------------------------------------------------------------------------
+Problem: Discounts:
+
+bill > 5000 → 20%
+2000 ≤ bill ≤ 5000 → 10%
+otherwise 0%
+
+
+DECLARE
+  bill NUMBER := 4200;
+  discount_rate NUMBER;
+  final_bill NUMBER;
+BEGIN
+  IF bill > 5000 THEN
+    discount_rate := 0.20;
+  ELSIF bill >= 2000 THEN
+    discount_rate := 0.10;
+  ELSE
+    discount_rate := 0.00;
+  END IF;
+
+  final_bill := bill * (1 - discount_rate);
+  DBMS_OUTPUT.PUT_LINE('Final bill: ' || final_bill);
+END;
+/
+----------------------------------------------------------------------------------------------------------------------------------------------
+7:Write a PL/SQL block that prints the multiplication table of a number entered by the user 
+(example: table of 7).
+
+DECLARE
+  n NUMBER := 7;
+  i NUMBER;
+  res NUMBER;
+BEGIN
+  FOR i IN 1 .. 10 LOOP
+    res := n * i;
+    DBMS_OUTPUT.PUT_LINE(n || ' x ' || i || ' = ' || res);
+  END LOOP;
+END;
+/
+-----------------------------------------------------------------------------------------------------------------------------------------------
+8:A company wants to print employee IDs from 100 to 120. Use a FOR LOOP to print them. 
+
+BEGIN
+  FOR id IN 100 .. 120 LOOP
+    DBMS_OUTPUT.PUT_LINE('Employee ID: ' || id);
+  END LOOP;
+END;
+/
+----------------------------------------------------------------------------------------------------------------------------------------------
+8: Write a PL/SQL block to display the factorial of a given number using a WHILE loop. 
+Declare
+	n	Number:=5;
+	fact	Number:=1;
+	i	Number:=1;
+Begin
+	while i<n LOOP
+		fact:=fact*i    
+		i:=i+1
+  	END LOOP;
+  	DBMS_OUTPUT.PUT_LINE('Factorial of ' || n || ' is ' || fact);
+END;
+/
+----------------------------------------------------------------------------------------------------------------------------------------------
+9:A countdown timer should print numbers from 10 down to 1 using a REVERSE FOR loop.
+BEGIN
+  FOR i IN REVERSE 1 .. 10 LOOP
+    DBMS_OUTPUT.PUT_LINE(i);
+  END LOOP;
+END;
+/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
